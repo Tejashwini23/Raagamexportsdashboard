@@ -207,7 +207,14 @@ st.sidebar.title("🔍 Navigation")
 page = st.sidebar.radio("Go to", ["Received Orders", "Pending Orders", "Fabric Orders"])
 
 # Database connection
-conn = sqlite3.connect(r"D:\rangam exports\raagamexports1.db")
+import requests, sqlite3
+
+url = "https://raw.githubusercontent.com/yourusername/Tejashwini23/main/raagamexports1.db"
+r = requests.get(url)
+open("raagamexports1.db", "wb").write(r.content)
+conn = sqlite3.connect("raagamexports1.db")
+
+# conn = sqlite3.connect(r"D:\rangam exports\raagamexports1.db")
 
 # 📦 RECEIVED ORDERS DASHBOARD
 if page == "Received Orders":
